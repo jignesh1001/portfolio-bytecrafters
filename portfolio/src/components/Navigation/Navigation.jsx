@@ -4,7 +4,6 @@ import { useScrollAnimation, scrollToSection } from '../../hooks/useScrollAnimat
 import { navigation } from '../../data/portfolioData';
 import './Navigation.css';
 
-
 const Navigation = () => {
   const { scrolled } = useScrollAnimation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
