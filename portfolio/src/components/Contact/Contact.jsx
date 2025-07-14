@@ -1,9 +1,6 @@
-// src/components/Contact/Contact.jsx
 import { useState } from "react";
-import { contactInfo } from "../../data/portfolioData";
-import { socialLinks } from "../../data/portfolioData";
+import { contactInfo, socialLinks } from "../../data/portfolioData"; // adjust path
 import "./Contact.css";
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -16,10 +13,7 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState("");
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -28,10 +22,21 @@ const Contact = () => {
     setSubmitStatus("");
 
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const form = new FormData();
+      form.append("name", formData.name);
+      form.append("email", formData.email);
+      form.append("subject", formData.subject);
+      form.append("message", formData.message);
 
-      // Reset form
+       await fetch(import.meta.env.VITE_GAS_KEY, {
+        method: "POST",
+        body: form,
+      });
+      console.log(submitStatus);
+      
+
+      setSubmitStatus("success");
+
       setFormData({
         name: "",
         email: "",
@@ -39,10 +44,10 @@ const Contact = () => {
         message: "",
       });
 
-      setSubmitStatus("success");
       setTimeout(() => setSubmitStatus(""), 5000);
     } catch (error) {
-      setSubmitStatus(error);
+      console.error("Error submitting form: test", error);
+      setSubmitStatus("error");
       setTimeout(() => setSubmitStatus(""), 5000);
     } finally {
       setIsSubmitting(false);
@@ -58,33 +63,25 @@ const Contact = () => {
         </div>
 
         <div className="contact-content">
+          {/* Contact Info */}
           <div className="contact-info">
             <div className="contact-card scale-in">
               <div className="contact-header">
                 <h3>Let's Work Together</h3>
-                <p>
-                  I'm always interested in hearing about new projects and
-                  opportunities.
-                </p>
+                <p>I'm always interested in hearing about new projects and opportunities.</p>
               </div>
 
               <div className="contact-methods">
                 <div className="contact-method">
-                  <div className="contact-icon">
-                    <span>📧</span>
-                  </div>
+                  <div className="contact-icon">📧</div>
                   <div className="contact-details">
                     <h4>Email</h4>
-                    <a href={`mailto:${contactInfo.email}`}>
-                      {contactInfo.email}
-                    </a>
+                    <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
                   </div>
                 </div>
 
                 <div className="contact-method">
-                  <div className="contact-icon">
-                    <span>📱</span>
-                  </div>
+                  <div className="contact-icon">📱</div>
                   <div className="contact-details">
                     <h4>Phone</h4>
                     <a href={`tel:${contactInfo.phone}`}>{contactInfo.phone}</a>
@@ -92,9 +89,7 @@ const Contact = () => {
                 </div>
 
                 <div className="contact-method">
-                  <div className="contact-icon">
-                    <span>📍</span>
-                  </div>
+                  <div className="contact-icon">📍</div>
                   <div className="contact-details">
                     <h4>Location</h4>
                     <p>{contactInfo.location}</p>
@@ -102,28 +97,8 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* <div className="social-links">
-                <h4>Follow Me</h4>
-                <div className="social-icons">
-                  {socialLinks.map((link, index) => (
-                    <a 
-                      key={index} 
-                      href={link.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="social-link"
-                      title={link.platform}
-                    >
-                      <span>{link.icon}</span>
-                    </a>
-                  ))}
-                </div>
-              </div> */}
-
               <div className="social-links my-6">
-                <h4 className="text-lg font-semibold text-gray-800 mb-3">
-                  Follow Me
-                </h4>
+                <h4 className="text-lg font-semibold text-gray-800 mb-3">Follow Me</h4>
                 <div className="flex gap-4">
                   {socialLinks.map((link, index) => (
                     <a
@@ -142,6 +117,7 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* Contact Form */}
           <div className="contact-form-container">
             <form className="contact-form scale-in" onSubmit={handleSubmit}>
               <div className="form-group">
@@ -203,13 +179,11 @@ const Contact = () => {
               >
                 {isSubmitting ? (
                   <>
-                    <span className="spinner"></span>
-                    Sending...
+                    <span className="spinner"></span> Sending...
                   </>
                 ) : (
                   <>
-                    <span>📨</span>
-                    Send Message
+                    <span>📨</span> Send Message
                   </>
                 )}
               </button>
@@ -218,14 +192,11 @@ const Contact = () => {
                 <div className={`submit-status ${submitStatus}`}>
                   {submitStatus === "success" ? (
                     <>
-                      <span>✅</span>
-                      Thank you! Your message has been sent successfully.
+                      <span>✅</span> Your message was sent successfully.
                     </>
                   ) : (
                     <>
-                      <span>❌</span>
-                      Sorry, there was an error sending your message. Please try
-                      again.
+                      <span>❌</span> Something went wrong. Please try again.
                     </>
                   )}
                 </div>
