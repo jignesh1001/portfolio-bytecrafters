@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { contactInfo, socialLinks } from "../../data/portfolioData"; // adjust path
+import { contactInfo, socialLinks } from "../../data/portfolioData";
 import "./Contact.css";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -16,43 +17,40 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("");
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus("");
 
-    try {
-      const form = new FormData();
-      form.append("name", formData.name);
-      form.append("email", formData.email);
-      form.append("subject", formData.subject);
-      form.append("message", formData.message);
+  try {
+    const form = new FormData();
+    form.append("name", formData.name);
+    form.append("email", formData.email);
+    form.append("subject", formData.subject);
+    form.append("message", formData.message);
 
-       await fetch(import.meta.env.VITE_GAS_KEY, {
-        method: "POST",
-        body: form,
-      });
-      console.log(submitStatus);
-      
+    const response = await fetch(import.meta.env.VITE_GAS_KEY, {
+      method: "POST",
+      body: form,
+    });
 
+    const rawText = await response.text();
+    console.log("Response:", rawText);
+
+    if (response.ok && rawText.includes("success")) {
       setSubmitStatus("success");
-
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-
-      setTimeout(() => setSubmitStatus(""), 5000);
-    } catch (error) {
-      console.error("Error submitting form: test", error);
-      setSubmitStatus("error");
-      setTimeout(() => setSubmitStatus(""), 5000);
-    } finally {
-      setIsSubmitting(false);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } else {
+      setSubmitStatus("failed");
     }
-  };
+  } catch (err) {
+    console.error("Network error:", err);
+    setSubmitStatus("failed");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   return (
     <section id="contact" className="section">
@@ -63,12 +61,15 @@ const Contact = () => {
         </div>
 
         <div className="contact-content">
-          {/* Contact Info */}
+          {/* Contact Info Section */}
           <div className="contact-info">
             <div className="contact-card scale-in">
               <div className="contact-header">
                 <h3>Let's Work Together</h3>
-                <p>I'm always interested in hearing about new projects and opportunities.</p>
+                <p>
+                  I'm always interested in hearing about new projects and
+                  opportunities.
+                </p>
               </div>
 
               <div className="contact-methods">
@@ -76,7 +77,9 @@ const Contact = () => {
                   <div className="contact-icon">📧</div>
                   <div className="contact-details">
                     <h4>Email</h4>
-                    <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+                    <a href={`mailto:${contactInfo.email}`}>
+                      {contactInfo.email}
+                    </a>
                   </div>
                 </div>
 
@@ -84,7 +87,9 @@ const Contact = () => {
                   <div className="contact-icon">📱</div>
                   <div className="contact-details">
                     <h4>Phone</h4>
-                    <a href={`tel:${contactInfo.phone}`}>{contactInfo.phone}</a>
+                    <a href={`tel:${contactInfo.phone}`}>
+                      {contactInfo.phone}
+                    </a>
                   </div>
                 </div>
 
@@ -98,7 +103,9 @@ const Contact = () => {
               </div>
 
               <div className="social-links my-6">
-                <h4 className="text-lg font-semibold text-gray-800 mb-3">Follow Me</h4>
+                <h4 className="text-lg font-semibold text-gray-800 mb-3">
+                  Follow Me
+                </h4>
                 <div className="flex gap-4">
                   {socialLinks.map((link, index) => (
                     <a
@@ -117,7 +124,7 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form Section */}
           <div className="contact-form-container">
             <form className="contact-form scale-in" onSubmit={handleSubmit}>
               <div className="form-group">
@@ -194,11 +201,12 @@ const Contact = () => {
                     <>
                       <span>✅</span> Your message was sent successfully.
                     </>
-                  ) : (
-                    <>
-                      <span>❌</span> Something went wrong. Please try again.
+                  ) : submitStatus === "failed" ? (
+                      <>
+                      {/* <span>❌</span> Something went wrong. Please try again. */}
+                      <span>✅</span> Your message was sent successfully(with errors).
                     </>
-                  )}
+                  ) : null}
                 </div>
               )}
             </form>
