@@ -49,7 +49,7 @@ export const projects = [
     id: 1,
     title: "E-commerce Platform",
     description: "A full-stack e-commerce solution built with React, Node.js, and Stripe integration. Features include user authentication, product management, and secure payments.",
-    image: "/projects/ecommerce.jpg", // Add your project images to public/projects/
+    image: "/projects/91642c318bcb3c682290fa9f68b8c69d.jpg", // Add your project images to public/projects/
     technologies: ["React", "Node.js", "MongoDB", "Stripe", "JWT", "Material-UI"],
     liveDemo: "https://your-ecommerce-demo.com",
     github: "https://github.com/yourusername/ecommerce-platform",
@@ -59,7 +59,7 @@ export const projects = [
     id: 2,
     title: "Task Management App",
     description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    image: "/projects/taskmanager.jpg",
+    image: "/projects/a531797c96370857cbd5a6d9e95172b9.jpg",
     technologies: ["React", "Socket.io", "Express", "PostgreSQL", "Redux", "Tailwind CSS"],
     liveDemo: "https://your-taskmanager-demo.com",
     github: "https://github.com/yourusername/task-manager",
@@ -69,7 +69,7 @@ export const projects = [
     id: 3,
     title: "Weather Dashboard",
     description: "A responsive weather application with location-based forecasts, interactive maps, and historical weather data visualization.",
-    image: "/projects/weather.jpg",
+    image: "/projects/d49eff09592df66f5c637a366d35768a.jpg",
     technologies: ["React", "Chart.js", "OpenWeather API", "Geolocation", "CSS3"],
     liveDemo: "https://your-weather-demo.com",
     github: "https://github.com/yourusername/weather-dashboard",
@@ -79,7 +79,7 @@ export const projects = [
     id: 4,
     title: "Social Media Dashboard",
     description: "A comprehensive social media analytics dashboard with real-time data visualization and reporting features.",
-    image: "/projects/social.jpg",
+    image: "/projects/ede98051911b94cf0aeb0d098c908261.jpg",
     technologies: ["Vue.js", "D3.js", "Express", "MongoDB", "WebSockets"],
     liveDemo: "https://your-social-demo.com",
     github: "https://github.com/yourusername/social-dashboard",
@@ -89,7 +89,7 @@ export const projects = [
     id: 5,
     title: "Blog CMS",
     description: "A content management system for blogs with markdown support, user roles, and SEO optimization.",
-    image: "/projects/blog.jpg",
+    image: "/projects/ede98051911b94cf0aeb0d098c908261.jpg",
     technologies: ["Next.js", "Prisma", "PostgreSQL", "Tailwind CSS", "NextAuth"],
     liveDemo: "https://your-blog-demo.com",
     github: "https://github.com/yourusername/blog-cms",
@@ -200,3 +200,10 @@ export const certifications = [
     credentialId: "GCP789012"
   }
 ];
+
+
+export const contactInfo = {
+  email: "your.email@example.com",
+  phone: "+1 (555) 123-4567",
+  location: "Your City, Country"
+};
