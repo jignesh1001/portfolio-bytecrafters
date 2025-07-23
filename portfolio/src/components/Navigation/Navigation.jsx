@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useScrollAnimation, scrollToSection } from '../../hooks/useScrollAnimation';
 import { navigation } from '../../data/portfolioData';
 import './Navigation.css';
+import { personalInfo } from '../../data/portfolioData';
 
 const Navigation = () => {
   const { scrolled } = useScrollAnimation();
@@ -19,7 +20,7 @@ const Navigation = () => {
       <div className="nav-container">
         <div className="nav-left">
           <a href="#home" className="nav-logo" onClick={() => handleNavClick('#home')}>
-            Portfolio
+            <p className="hero-subtitle">{personalInfo.name}</p>
           </a>
         </div>
 

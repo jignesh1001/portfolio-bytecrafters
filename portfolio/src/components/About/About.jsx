@@ -4,8 +4,8 @@ import './About.css';
 
 const About = () => {
   return (
-    <section id="about" className="section fade-in items-center">
-      <div className="container">
+    <section id="about" className="section fade-in items-center ">
+      <div className="container flex flex-col items-center">
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 30 }}
@@ -46,7 +46,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="about-actions">
+            <div className="about-actions  flex flex-col items-center">
               <a href="/resume.pdf" download className="btn btn-secondary">
                 Download Resume
               </a>
