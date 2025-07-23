@@ -15,64 +15,59 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`navigation ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container">
-        <div className="nav-content">
-          <div className="logo">
-            <a href="#home" onClick={() => handleNavClick('#home')}>
-              Portfolio
-            </a>
-          </div>
-          
-          {/* Desktop Navigation */}
-          <ul className="nav-links desktop-nav">
-            {navigation.map((item) => (
-              <li key={item.name}>
-                <a 
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="mobile-menu-button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-          >
-            <span className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </button>
+    <nav className={`nav-wrapper ${scrolled ? 'scrolled' : ''}`}>
+      <div className="nav-container">
+        <div className="nav-left">
+          <a href="#home" className="nav-logo" onClick={() => handleNavClick('#home')}>
+            Portfolio
+          </a>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
-          <ul className="mobile-nav-links">
-            {navigation.map((item) => (
-              <li key={item.name}>
-                <a 
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+        {/* Desktop Nav */}
+        <ul className="nav-links desktop-only">
+          {navigation.map((item) => (
+            <li key={item.name}>
+              <a
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item.href);
+                }}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Hamburger */}
+        <div
+          className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          <span />
+          <span />
+          <span />
         </div>
+      </div>
+
+      {/* Mobile Nav */}
+      <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+        <ul>
+          {navigation.map((item) => (
+            <li key={item.name}>
+              <a
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item.href);
+                }}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   );

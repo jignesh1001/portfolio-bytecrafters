@@ -18,28 +18,25 @@ const Footer = () => {
             <li>📍 {contactInfo.location}</li>
           </ul>
         </div>
-
-        <div className="footer-social">
-          <h4 className="footer-title">Follow Me</h4>
-          <div className="footer-icons">
-            {socialLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-icon"
-                title={link.platform}
-              >
-                <span>{link.icon}</span>
-              </a>
-            ))}
-          </div>
+        <div className="footer-contact">
+          <h4 className="footer-title">Socials</h4>
+          <ul>
+            <li>
+              <a href="">github</a>
+            </li>
+            <li>
+              <a href="">instagram</a>
+            </li>
+            <li>
+              {" "}
+              <a href="">Twitter</a>
+            </li>
+          </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
-        &copy; {new Date().getFullYear()} Your Name. All rights reserved.
+        &copy; {new Date().getFullYear()} trioMinds. All rights reserved.
       </div>
     </footer>
   );

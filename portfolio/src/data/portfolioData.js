@@ -2,11 +2,11 @@
 // src/data/portfolioData.js
 
 export const personalInfo = {
-  name: "Your Name",
-  title: "Full-Stack Developer & Creative Problem Solver",
+  name: "trioMinds",
+  title: "your way to digitize your business",
   email: "your.email@example.com",
   phone: "+1 (555) 123-4567",
-  location: "Your City, Country",
+  location: "Mumbai,India",
   bio: [
     "I'm a passionate full-stack developer with over 3 years of experience in creating modern web applications. I love working with React, Node.js, and exploring new technologies to build innovative solutions.",
     "When I'm not coding, you can find me contributing to open-source projects, writing technical articles, or exploring the latest trends in web development. I believe in continuous learning and staying updated with the ever-evolving tech landscape."
@@ -51,8 +51,8 @@ export const projects = [
     description: "A full-stack e-commerce solution built with React, Node.js, and Stripe integration. Features include user authentication, product management, and secure payments.",
     image: "/projects/91642c318bcb3c682290fa9f68b8c69d.jpg", // Add your project images to public/projects/
     technologies: ["React", "Node.js", "MongoDB", "Stripe", "JWT", "Material-UI"],
-    liveDemo: "https://your-ecommerce-demo.com",
-    github: "https://github.com/yourusername/ecommerce-platform",
+    liveDemo: "https://reloadcasuals.in/",
+    github: "",
     featured: true
   },
   {

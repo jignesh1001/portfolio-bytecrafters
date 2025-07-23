@@ -1,25 +1,37 @@
-// src/components/About/About.jsx
 import { personalInfo } from '../../data/portfolioData';
+import { motion } from 'framer-motion';
 import './About.css';
 
 const About = () => {
   return (
-    <section id="about" className="section">
+    <section id="about" className="section fade-in items-center">
       <div className="container">
-        <div className="section-header fade-in">
+        <motion.div
+          className="section-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <h2>About Me</h2>
           <p>Passionate developer with a love for creating amazing digital experiences</p>
-        </div>
-        
+        </motion.div>
+
         <div className="about-content">
-          <div className="about-text slide-in-left">
+          <motion.div
+            className="about-text"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             {personalInfo.bio.map((paragraph, index) => (
               <p key={index} className="about-paragraph">
                 {paragraph}
               </p>
             ))}
-            
-            <div className="about-stats">
+
+            <div className="about-stats ">
               <div className="stat-item">
                 <span className="stat-number">3+</span>
                 <span className="stat-label">Years Experience</span>
@@ -33,16 +45,12 @@ const About = () => {
                 <span className="stat-label">Happy Clients</span>
               </div>
             </div>
-            
+
             <div className="about-actions">
-              <a 
-                href="/resume.pdf" 
-                download
-                className="btn btn-primary"
-              >
+              <a href="/resume.pdf" download className="btn btn-secondary">
                 Download Resume
               </a>
-              <a 
+              <a
                 href="#contact"
                 className="btn btn-secondary"
                 onClick={(e) => {
@@ -53,16 +61,9 @@ const About = () => {
                 Let's Talk
               </a>
             </div>
-          </div>
+          </motion.div>
+
           
-          <div className="about-image slide-in-right">
-            <div className="image-container">
-              <div className="image-placeholder">
-                <span>Your Photo Here</span>
-              </div>
-              <div className="image-decoration"></div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
