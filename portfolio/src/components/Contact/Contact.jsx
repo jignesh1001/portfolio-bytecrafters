@@ -54,7 +54,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section">
-      <div className="container">
+      <div className="container bg-black">
         <div className="section-header fade-in">
           <h2>Get In Touch</h2>
           <p>Let's discuss your project or just say hello</p>

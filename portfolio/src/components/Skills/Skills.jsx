@@ -4,8 +4,8 @@ import './Skills.css';
 
 const Skills = () => {
   return (
-    <section id="skills" className="section">
-      <div className="container">
+    <section id="skills" className="section ">
+      <div className="container bg-black">
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 30 }}

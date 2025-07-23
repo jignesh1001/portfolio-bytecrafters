@@ -13,8 +13,8 @@ const About = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2>About Me</h2>
-          <p>Passionate developer with a love for creating amazing digital experiences</p>
+          <h2>About Us</h2>
+          <p>Passionate developers with a love for creating amazing digital experiences</p>
         </motion.div>
 
         <div className="about-content">

@@ -1,9 +1,9 @@
 // src/components/Navigation/Navigation.jsx
+
 import { useState } from 'react';
-import { useScrollAnimation, scrollToSection } from '../../hooks/useScrollAnimation';
-import { navigation } from '../../data/portfolioData';
+import { scrollToSection, useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { navigation, personalInfo } from '../../data/portfolioData';
 import './Navigation.css';
-import { personalInfo } from '../../data/portfolioData';
 
 const Navigation = () => {
   const { scrolled } = useScrollAnimation();
@@ -16,16 +16,15 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`nav-wrapper ${scrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container">
+    <nav className={`custom-nav-wrapper ${scrolled ? 'scrolled' : ''}`}>
+      <div className="custom-nav">
         <div className="nav-left">
-          <a href="#home" className="nav-logo" onClick={() => handleNavClick('#home')}>
-            <p className="hero-subtitle">{personalInfo.name}</p>
-          </a>
+          <span className="logo-icon">🧠</span>
+          <span className="logo-text">{personalInfo.name}</span>
         </div>
 
         {/* Desktop Nav */}
-        <ul className="nav-links desktop-only">
+        <ul className="nav-right desktop-only">
           {navigation.map((item) => (
             <li key={item.name}>
               <a
@@ -41,9 +40,9 @@ const Navigation = () => {
           ))}
         </ul>
 
-        {/* Hamburger */}
+        {/* Hamburger Icon (Mobile Only) */}
         <div
-          className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}
+          className={`hamburger mobile-only ${mobileMenuOpen ? 'open' : ''}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <span />
@@ -52,7 +51,7 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav Menu */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <ul>
           {navigation.map((item) => (

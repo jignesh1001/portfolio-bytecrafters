@@ -1,159 +1,130 @@
-:root {
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --text-color: #111;
-  --hover-underline: #111;
-}
-
-/* Navbar Wrapper */
-.nav-wrapper {
+/* Base wrapper */
+.custom-nav-wrapper {
   position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(12px);
-  background-color: var(--glass-bg);
-  transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: fit-content;
 }
 
-.nav-wrapper.scrolled {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.nav-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
+/* Navigation container */
+.custom-nav {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.nav-logo {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: var(--text-color);
-  text-decoration: none;
-}
-
-/* Desktop Links */
-.nav-links {
-  display: flex;
+  justify-content: space-between;
   gap: 2rem;
-  list-style: none;
 }
 
-.nav-links li a {
+/* Logo section */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+}
+
+.logo-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* Desktop nav links */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav-right a {
+  color: white;
   text-decoration: none;
-  color: var(--text-color);
   font-weight: 500;
-  position: relative;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  transition: background 0.3s ease;
 }
 
-.nav-links li a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: var(--hover-underline);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+.nav-right a:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.nav-links li a:hover::after {
-  transform: scaleX(1);
-}
-
-/* Hamburger Icon */
+/* Hamburger icon (mobile) */
 .hamburger {
-  width: 24px;
-  height: 18px;
   display: none;
   flex-direction: column;
-  justify-content: space-between;
   cursor: pointer;
-  z-index: 100;
+  gap: 5px;
 }
 
 .hamburger span {
+  display: block;
   height: 2px;
-  background-color: var(--text-color);
-  border-radius: 2px;
-  transition: all 0.3s ease;
+  width: 20px;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
 }
 
 .hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(4px, 4px);
 }
-
 .hamburger.open span:nth-child(2) {
   opacity: 0;
 }
-
 .hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(4px, -4px);
 }
 
-/* Mobile Menu */
+/* Mobile menu dropdown */
 .mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  height: 100vh;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: right 0.3s ease;
-  z-index: 90;
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background-color: #121212;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-align: center;
 }
 
 .mobile-menu.open {
-  right: 0;
+  display: block;
 }
 
 .mobile-menu ul {
   list-style: none;
-  text-align: center;
   padding: 0;
+  margin: 0;
 }
 
-.mobile-menu ul li {
-  margin: 1.5rem 0;
+.mobile-menu li {
+  margin-bottom: 1rem;
 }
 
-.mobile-menu ul li a {
+.mobile-menu a {
+  color: white;
   text-decoration: none;
-  color: var(--text-color);
-  font-size: 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
-/* Responsive */
+/* Responsive rules */
 @media (max-width: 768px) {
   .desktop-only {
     display: none;
   }
 
-  .hamburger {
+  .mobile-only {
     display: flex;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
   }
 }

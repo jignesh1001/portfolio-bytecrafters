@@ -1,11 +1,12 @@
 /* Hero.css */
 
+/* Scroll Arrow */
 .scroll-arrow span {
   display: block;
   width: 10px;
   height: 10px;
   margin: 5px auto;
-  border: solid white;
+  border: solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   animation: scroll 1s infinite;
@@ -23,8 +24,7 @@
   }
 }
 
-
-
+/* Hero Section */
 .hero {
   position: relative;
   height: 100vh;
@@ -32,19 +32,21 @@
   align-items: center;
   justify-content: center;
   padding: 0 2rem;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000000;
+  color: #ffffff;
   text-align: center;
   overflow: hidden;
 }
 
+/* Optional Background Overlay */
 .hero-background {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-color: #6e393941;
+  background-color: rgba(0, 0, 0, 0.4); /* dark transparent */
 }
 
+/* Main Content */
 .hero-content {
   position: relative;
   z-index: 1;
@@ -52,26 +54,30 @@
   margin: 0 auto;
 }
 
+/* Title */
 .hero-title {
   font-size: 3rem;
   line-height: 1.2;
   font-weight: 700;
-  color: #000;
+  color: #ffffff;
 }
 
 .hero-title .highlight {
-  background: #000;
-  color: #fff;
+  background: #ffffff;
+  color: #000000;
   padding: 0 0.5rem;
+  border-radius: 4px;
 }
 
+/* Subtitle */
 .hero-subtitle {
   font-size: 1.25rem;
   margin-top: 1rem;
-  color: #333;
+  color: #d1d5db; /* Tailwind gray-300 */
   font-weight: 400;
 }
 
+/* Button Area */
 .hero-actions {
   margin-top: 2.5rem;
   display: flex;
@@ -81,6 +87,7 @@
   flex-wrap: wrap;
 }
 
+/* Base Button */
 .btn {
   padding: 0.8rem 1.8rem;
   border-radius: 999px;
@@ -88,34 +95,32 @@
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  border: black solid 2px;
+  border: 2px solid #ffffff;
 }
 
-/* Ghost = White background, Black border & text */
+/* Ghost = Transparent background */
 .btn-ghost {
-   background-color: #000;
-  color: #101010;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 .btn-ghost:hover {
-  background-color: #333;
-  color: #fff;
+  background-color: #1f2937; /* Tailwind gray-800 */
   transform: translateY(-2px);
 }
 
-/* Secondary = Black background, white text */
+/* Secondary = Solid dark button */
 .btn-secondary {
-  background-color: #000;
-  color: #fff;
+  background-color: #1f2937; /* Tailwind gray-800 */
+  color: #ffffff;
 }
 
 .btn-secondary:hover {
-  background-color: #333;
-  color: #fff;
+  background-color: #4b5563; /* Tailwind gray-600 */
   transform: translateY(-2px);
 }
 
-/* Scroll Indicator */
+/* Scroll Indicator Container */
 .hero-scroll-indicator {
   position: absolute;
   bottom: 20px;
@@ -132,8 +137,8 @@
   display: block;
   width: 8px;
   height: 8px;
-  border-bottom: 2px solid #000;
-  border-right: 2px solid #000;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
   transform: rotate(45deg);
   margin: 4px auto;
   animation: arrow-bounce 1.5s infinite;
@@ -151,9 +156,11 @@
   }
 }
 
+/* Responsive Typography */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.2rem;
+    color: #ffffff;
   }
 
   .hero-subtitle {
