@@ -2,10 +2,12 @@
 import './Projects.css';
 import { motion } from 'framer-motion';
 import { projects } from '../../data/portfolioData';
+import { Carousel } from 'primereact/carousel';
 
 const Projects = () => {
   return (
     <section id="projects" className="section bg-black text-white">
+        
       <div className="container mx-auto px-4 py-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
