@@ -6,10 +6,11 @@
   transform: translateX(-50%);
   z-index: 999;
   width: fit-content;
+  color: white; /* Default color is white */
   transition: color 0.3s ease;
 }
 
-/* Default text white */
+/* Explicit white text state */
 .custom-nav-wrapper.light-text {
   color: white;
 }
@@ -18,14 +19,8 @@
   color: white;
 }
 
-/* When in About or Projects, change text to black */
-.custom-nav-wrapper.dark-text {
-  color: black;
-}
+/* Override text color to black in specific sections */
 
-.custom-nav-wrapper.dark-text a {
-  color: black;
-}
 
 /* Navigation container */
 .custom-nav {

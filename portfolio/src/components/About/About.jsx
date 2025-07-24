@@ -1,70 +1,23 @@
-import { personalInfo } from '../../data/portfolioData';
-import { motion } from 'framer-motion';
+// src/components/About/About.jsx
 import './About.css';
+import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section id="about" className="section fade-in items-center">
-      <div className="container flex flex-col items-center">
+    <section id="about" className="section bg-black text-white">
+      <div className="container mx-auto px-4 py-20 text-center">
         <motion.div
-          className="section-header text-center"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold mb-2">About Us</h2>
-          <p className="text-lg">
-            Passionate developers with a love for creating amazing digital experiences
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            About Us
+          </h2>
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            We are a team of developers passionate about crafting seamless web experiences. From interactive user interfaces to scalable backends, we believe in clean code, creative thinking, and constant evolution.
           </p>
         </motion.div>
-
-        <div className="about-content max-w-3xl mt-8">
-          <motion.div
-            className="about-text"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {personalInfo.bio.map((paragraph, index) => (
-              <p key={index} className="about-paragraph">
-                {paragraph}
-              </p>
-            ))}
-
-            <div className="about-stats">
-              <div className="stat-item">
-                <span className="stat-number">3+</span>
-                <span className="stat-label">Years Experience</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">50+</span>
-                <span className="stat-label">Projects Completed</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">20+</span>
-                <span className="stat-label">Happy Clients</span>
-              </div>
-            </div>
-
-            <div className="about-actions">
-              <a href="/resume.pdf" download className="btn btn-secondary">
-                Download Resume
-              </a>
-              <a
-                href="#contact"
-                className="btn btn-secondary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Let's Talk
-              </a>
-            </div>
-          </motion.div>
-        </div>
       </div>
     </section>
   );

@@ -29,7 +29,7 @@ const Hero = () => {
 
         <div className="hero-actions flex gap-4 ">
           <button className="btn btn-secondary" onClick={handleCTAClick}>
-            View My Work
+            See Work  
           </button>
           <button
             className="btn btn-secondary"
