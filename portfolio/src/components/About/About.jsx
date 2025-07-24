@@ -4,7 +4,7 @@ import './About.css';
 
 const About = () => {
   return (
-    <section id="about" className="section fade-in items-center bg-white text-black">
+    <section id="about" className="section fade-in items-center">
       <div className="container flex flex-col items-center">
         <motion.div
           className="section-header text-center"
@@ -14,7 +14,7 @@ const About = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-bold mb-2">About Us</h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg">
             Passionate developers with a love for creating amazing digital experiences
           </p>
         </motion.div>
@@ -28,27 +28,27 @@ const About = () => {
             viewport={{ once: true }}
           >
             {personalInfo.bio.map((paragraph, index) => (
-              <p key={index} className="mb-4 text-gray-800 leading-relaxed">
+              <p key={index} className="about-paragraph">
                 {paragraph}
               </p>
             ))}
 
-            <div className="about-stats grid grid-cols-1 sm:grid-cols-3 gap-6 my-8 text-center">
+            <div className="about-stats">
               <div className="stat-item">
-                <span className="stat-number text-3xl font-bold">3+</span>
-                <span className="stat-label block text-sm text-gray-600">Years Experience</span>
+                <span className="stat-number">3+</span>
+                <span className="stat-label">Years Experience</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number text-3xl font-bold">50+</span>
-                <span className="stat-label block text-sm text-gray-600">Projects Completed</span>
+                <span className="stat-number">50+</span>
+                <span className="stat-label">Projects Completed</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number text-3xl font-bold">20+</span>
-                <span className="stat-label block text-sm text-gray-600">Happy Clients</span>
+                <span className="stat-number">20+</span>
+                <span className="stat-label">Happy Clients</span>
               </div>
             </div>
 
-            <div className="about-actions flex flex-col sm:flex-row justify-center items-center gap-4 mt-6">
+            <div className="about-actions">
               <a href="/resume.pdf" download className="btn btn-secondary">
                 Download Resume
               </a>
