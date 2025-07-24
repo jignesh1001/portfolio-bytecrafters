@@ -1,4 +1,25 @@
 /* Base wrapper */
+
+
+/* Default text white */
+.custom-nav-wrapper.light-text {
+  color: white;
+}
+
+.custom-nav-wrapper.light-text a {
+  color: white;
+}
+
+/* When in About or Projects, change text to black */
+.custom-nav-wrapper.dark-text {
+  color: black;
+}
+
+.custom-nav-wrapper.dark-text a {
+  color: black;
+}
+
+
 .custom-nav-wrapper {
   position: fixed;
   top: 1rem;

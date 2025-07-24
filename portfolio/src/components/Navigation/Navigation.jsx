@@ -1,6 +1,4 @@
-// src/components/Navigation/Navigation.jsx
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { scrollToSection, useScrollAnimation } from '../../hooks/useScrollAnimation';
 import { navigation, personalInfo } from '../../data/portfolioData';
 import './Navigation.css';
@@ -8,6 +6,7 @@ import './Navigation.css';
 const Navigation = () => {
   const { scrolled } = useScrollAnimation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   const handleNavClick = (href) => {
     const sectionId = href.replace('#', '');
@@ -15,8 +14,33 @@ const Navigation = () => {
     setMobileMenuOpen(false);
   };
 
+  useEffect(() => {
+    const sections = ['about', 'projects'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.5, // 50% of the section in view
+      }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const textShouldBeBlack = activeSection === 'about' || activeSection === 'projects';
+
   return (
-    <nav className={`custom-nav-wrapper ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`custom-nav-wrapper ${scrolled ? 'scrolled' : ''} ${textShouldBeBlack ? 'dark-text' : 'light-text'}`}>
       <div className="custom-nav">
         <div className="nav-left">
           <span className="logo-icon">🧠</span>
