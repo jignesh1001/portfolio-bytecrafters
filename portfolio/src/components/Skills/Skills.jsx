@@ -14,8 +14,8 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2>My Skills</h2>
-          <p>Here are some of the technologies and tools I've worked with.</p>
+          <h2>TechStack and Tools </h2>
+          <p>Here are some of the technologies and tools we've worked with.</p>
         </motion.div>
 
         <div className="skills-grid">
