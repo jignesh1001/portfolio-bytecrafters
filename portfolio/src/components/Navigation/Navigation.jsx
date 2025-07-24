@@ -15,7 +15,8 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    const sections = ['about', 'projects'];
+    // Observe all sections: hero, about, projects, skills, contact
+    const sections = ['hero', 'about', 'projects', 'skills', 'contact'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -24,9 +25,7 @@ const Navigation = () => {
           }
         });
       },
-      {
-        threshold: 0.5, // 50% of the section in view
-      }
+      { threshold: 0.5 } // Trigger when 50% of section is visible
     );
 
     sections.forEach((id) => {
@@ -37,10 +36,15 @@ const Navigation = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Only about/projects should have black text
   const textShouldBeBlack = activeSection === 'about' || activeSection === 'projects';
 
   return (
-    <nav className={`custom-nav-wrapper ${scrolled ? 'scrolled' : ''} ${textShouldBeBlack ? 'dark-text' : 'light-text'}`}>
+    <nav
+      className={`custom-nav-wrapper ${scrolled ? 'scrolled' : ''} ${
+        textShouldBeBlack ? 'dark-text' : 'light-text'
+      }`}
+    >
       <div className="custom-nav">
         <div className="nav-left">
           <span className="logo-icon">🧠</span>

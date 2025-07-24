@@ -1,5 +1,13 @@
 /* Base wrapper */
-
+.custom-nav-wrapper {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: fit-content;
+  transition: color 0.3s ease;
+}
 
 /* Default text white */
 .custom-nav-wrapper.light-text {
@@ -17,16 +25,6 @@
 
 .custom-nav-wrapper.dark-text a {
   color: black;
-}
-
-
-.custom-nav-wrapper {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999;
-  width: fit-content;
 }
 
 /* Navigation container */
@@ -56,7 +54,7 @@
 .logo-text {
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: inherit; /* inherits white or black */
 }
 
 /* Desktop nav links */
@@ -67,7 +65,7 @@
 }
 
 .nav-right a {
-  color: white;
+  color: inherit; /* inherits white or black */
   text-decoration: none;
   font-weight: 500;
   padding: 0.4rem 0.8rem;
@@ -91,7 +89,7 @@
   display: block;
   height: 2px;
   width: 20px;
-  background-color: white;
+  background-color: currentColor; /* adapts to white or black */
   transition: all 0.3s ease-in-out;
 }
 
