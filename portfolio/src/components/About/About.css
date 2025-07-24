@@ -30,12 +30,14 @@
 .about-content {
   display: flex;
   justify-content: center;
+  
 }
 
 .about-text {
   max-width: 800px;
   width: 100%;
   text-align: left;
+  color:#000;
 }
 
 /* Bio Paragraphs */

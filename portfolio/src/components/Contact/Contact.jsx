@@ -1,217 +1,61 @@
-import { useState } from "react";
-import { contactInfo, socialLinks } from "../../data/portfolioData";
+// src/components/Contact/Contact.jsx
+import { motion } from "framer-motion";
 import "./Contact.css";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setSubmitStatus("");
-
-  try {
-    const form = new FormData();
-    form.append("name", formData.name);
-    form.append("email", formData.email);
-    form.append("subject", formData.subject);
-    form.append("message", formData.message);
-
-    const response = await fetch(import.meta.env.VITE_GAS_KEY, {
-      method: "POST",
-      body: form,
-    });
-
-    const rawText = await response.text();
-    console.log("Response:", rawText);
-
-    if (response.ok && rawText.includes("success")) {
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } else {
-      setSubmitStatus("failed");
-    }
-  } catch (err) {
-    console.error("Network error:", err);
-    setSubmitStatus("failed");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-
-
   return (
-    <section id="contact" className="section">
-      <div className="container bg-black">
-        <div className="section-header fade-in">
-          <h2>Get In Touch</h2>
-          <p>Let's discuss your project or just say hello</p>
-        </div>
+    <section id="contact" className="contact-section">
+      <div className="contact-container">
+        <motion.div
+          className="contact-header"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2>Get in Touch</h2>
+          <p>
+            Whether you have a question or just want to say hi, feel free to
+            drop a message!
+          </p>
+        </motion.div>
 
-        <div className="contact-content">
-          {/* Contact Info Section */}
-          <div className="contact-info">
-            <div className="contact-card scale-in">
-              <div className="contact-header">
-                <h3>Let's Work Together</h3>
-                <p>
-                  I'm always interested in hearing about new projects and
-                  opportunities.
-                </p>
-              </div>
-
-              <div className="contact-methods">
-                <div className="contact-method">
-                  <div className="contact-icon">📧</div>
-                  <div className="contact-details">
-                    <h4>Email</h4>
-                    <a href={`mailto:${contactInfo.email}`}>
-                      {contactInfo.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="contact-method">
-                  <div className="contact-icon">📱</div>
-                  <div className="contact-details">
-                    <h4>Phone</h4>
-                    <a href={`tel:${contactInfo.phone}`}>
-                      {contactInfo.phone}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="contact-method">
-                  <div className="contact-icon">📍</div>
-                  <div className="contact-details">
-                    <h4>Location</h4>
-                    <p>{contactInfo.location}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="social-links my-6">
-                <h4 className="text-lg font-semibold text-gray-800 mb-3">
-                  Follow Me
-                </h4>
-                <div className="flex gap-4">
-                  {socialLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={link.platform}
-                      className="text-gray-600 hover:text-white hover:underline transition-colors duration-300 p-2 rounded-full shadow-md"
-                    >
-                      <span className="text-xs">{link.icon}</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form Section */}
-          <div className="contact-form-container">
-            <form className="contact-form scale-in" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your full name"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">Email *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="your.email@example.com"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="subject">Subject *</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  placeholder="Project discussion, job opportunity, etc."
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows="6"
-                  placeholder="Tell me about your project or how I can help you..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className={`submit-btn ${isSubmitting ? "submitting" : ""}`}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>
-                    <span className="spinner"></span> Sending...
-                  </>
-                ) : (
-                  <>
-                    <span>📨</span> Send Message
-                  </>
-                )}
-              </button>
-
-              {submitStatus && (
-                <div className={`submit-status ${submitStatus}`}>
-                  {submitStatus === "success" ? (
-                    <>
-                      <span>✅</span> Your message was sent successfully.
-                    </>
-                  ) : submitStatus === "failed" ? (
-                      <>
-                      {/* <span>❌</span> Something went wrong. Please try again. */}
-                      <span>✅</span> Your message was sent successfully(with errors).
-                    </>
-                  ) : null}
-                </div>
-              )}
-            </form>
-          </div>
-        </div>
+        <motion.form
+          className="contact-form"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            alert("Form submitted (you can connect this to a backend or script)");
+          }}
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            className="form-input"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            className="form-input"
+          />
+          <textarea
+            name="message"
+            rows="6"
+            placeholder="Your Message"
+            required
+            className="form-textarea"
+          ></textarea>
+          <button type="submit" className="btn-submit">
+            Send Message
+          </button>
+        </motion.form>
       </div>
     </section>
   );
