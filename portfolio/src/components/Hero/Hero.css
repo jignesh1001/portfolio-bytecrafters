@@ -82,7 +82,7 @@
   margin-top: 2.5rem;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start; /* Changed from center to flex-start for left alignment */
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -156,18 +156,54 @@
   }
 }
 
-/* Responsive Typography */
+/* Spline iframe styling */
+iframe {
+  border-radius: 8px;
+}
+
+/* Spline container specific styles */
+.spline-container {
+  /* Remove pointer-events: none to allow mouse interaction */
+}
+
+/* Responsive Typography and Layout */
+@media (max-width: 1024px) {
+  /* On tablets, adjust Spline positioning */
+  .spline-container {
+    width: 70% !important;
+    transform: translateX(5%) !important;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.2rem;
     color: #ffffff;
+    text-align: center;
   }
 
   .hero-subtitle {
     font-size: 1.1rem;
+    text-align: center;
   }
 
   .hero-actions {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* On mobile, hide Spline and center the text */
+  .hero-content {
+    text-align: center;
+  }
+  
+  /* Hide Spline on mobile for better performance and UX */
+  .spline-container {
+    display: none !important;
   }
 }
